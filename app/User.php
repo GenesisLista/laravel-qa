@@ -26,4 +26,17 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /* This is a relationship method for the user model (Question.php) */
+    public function questions()
+    {
+        return $this->hasMany(Question::class);
+    }
+
+    public function setTitleAttribute($value)
+    {
+        $this->attributes['title'] = $value;
+        $this->attributes['slug'] = str_slug($values);
+    }
+
 }
