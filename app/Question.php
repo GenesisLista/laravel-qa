@@ -35,4 +35,19 @@ class Question extends Model
     {
         return $this->created_at->format("d/m/Y");
     }
+
+    /* This is for the Status */
+    public function getStatusAttribute()
+    {
+        /* If the status is answered -> greater the zero value */
+        if($this->answers > 0) {
+            /* The best answer */
+            if($this->best_answer_id){
+                return "answered-accepted";
+            }
+            return "answered";
+        }
+        /* Else */
+        return "unanswered";
+    }
 }
