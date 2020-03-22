@@ -15,8 +15,10 @@
                 </div>
 
                 <div class="card-body">
-                   <!-- This is to display the question in loop -->
-                   @foreach ($questions as $question)
+                    <@include ('layouts._messages')
+
+                    <!-- This is to display the question in loop -->
+                    @foreach ($questions as $question)
                     <div class="media">
                         <div class="d-flex flex-column counters">
                             <div class="vote">
