@@ -38,5 +38,11 @@ class User extends Authenticatable
        // return route('question.show', $this->id);
        return '#';
     }
+
+    /* This is for the Answer relationship */
+    public function answers()
+    {
+        return $this->hasMany(Answer::class);
+    }
     
 }

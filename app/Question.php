@@ -40,7 +40,7 @@ class Question extends Model
     public function getStatusAttribute()
     {
         /* If the status is answered -> greater the zero value */
-        if($this->answers > 0) {
+        if($this->answers_count > 0) {
             /* The best answer */
             if($this->best_answer_id){
                 return "answered-accepted";
@@ -55,5 +55,11 @@ class Question extends Model
     public function getBodyHtmlAttribute()
     {
         return \Parsedown::instance()->text($this->body); 
+    }
+
+    /* This is for the Answer relationship */
+    public function answers()
+    {
+        return $this->hasMany(Answer::class);
     }
 }
